@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Ad Speed Controller",
+    "version": "1.0",
+    "description": "Automatically speeds up YouTube ads to 14x speed",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://www.youtube.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/watch*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "incognito": "spanning",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "YouTube Ad Speed Controller",
+        "default_icon": {
+            "16": "./icons/icon.png",
+            "48": "./icons/icon.png",
+            "128": "./icons/icon-128.png"
+        }
+    },
+    "icons": {
+        "16": "./icons/icon.png",
+        "48": "./icons/icon.png",
+        "128": "./icons/icon-128.png"
+    }
+}

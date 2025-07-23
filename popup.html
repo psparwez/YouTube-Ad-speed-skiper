@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 300px;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        margin: 0;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .header h2 {
+        margin: 0;
+        font-size: 18px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .status {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .status-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .active {
+        background: #4caf50;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+      }
+
+      .inactive {
+        background: #f44336;
+      }
+
+      .info {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        font-size: 13px;
+        line-height: 1.4;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .shortcut {
+        margin-top: 10px;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .version {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 11px;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>🚀 YouTube Ad Skipper</h2>
+    </div>
+
+    <div class="status">
+      <div class="status-text">
+        <span class="indicator active"></span>
+        Extension Active
+      </div>
+      <div style="font-size: 12px; opacity: 0.9">
+        Automatically speeds up YouTube ads to 14x
+      </div>
+    </div>
+
+    <div class="info">
+      <strong>How it works:</strong><br />
+      • Detects YouTube ads automatically<br />
+      • Speeds up ads to 14x playback rate<br />
+      • Restores normal speed after ads<br />
+      • Works in incognito mode<br />
+
+      <div class="shortcut"><strong>Test shortcut:</strong> Ctrl+Shift+A</div>
+    </div>
+
+    <div class="version">Version 1.0</div>
+  </body>
+</html>
