@@ -5,7 +5,8 @@
     "description": "Automatically speeds up YouTube ads to 14x speed",
     "permissions": [
         "activeTab",
-        "scripting"
+        "scripting",
+        "tabs"
     ],
     "host_permissions": [
         "https://www.youtube.com/*"
@@ -16,12 +17,13 @@
     "content_scripts": [
         {
             "matches": [
-                "https://www.youtube.com/watch*"
+                "https://www.youtube.com/watch*",
+                "*://*.youtube.com/*"
             ],
             "js": [
                 "content.js"
             ],
-            "run_at": "document_end"
+            "run_at": "document_idle"
         }
     ],
     "incognito": "spanning",
