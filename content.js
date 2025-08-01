@@ -158,8 +158,8 @@
         if (mutation.addedNodes.length > 0) {
           for (let node of mutation.addedNodes) {
             if (node.nodeType === 1) {
-              // Element node
-              const nodeStr = node.className || node.id || "";
+              const nodeStr =
+                String(node.className || "") + " " + String(node.id || "");
               if (nodeStr.includes("ad") || nodeStr.includes("ytp")) {
                 shouldCheck = true;
                 break;
@@ -174,7 +174,8 @@
             mutation.attributeName === "id")
         ) {
           const target = mutation.target;
-          const attrValue = target.className || target.id || "";
+          const attrValue =
+            String(target.className || "") + " " + String(target.id || "");
           if (attrValue.includes("ad") || attrValue.includes("ytp")) {
             shouldCheck = true;
           }
