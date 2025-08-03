@@ -7,6 +7,7 @@
     intervalId: null,
     observerActive: false,
     lastUrl: window.location.href,
+    speedCaptured: false,
   };
 
   function isAdVisible(selector) {
@@ -94,10 +95,20 @@
     if (adDetected) {
       console.log("[AdSkipper] Ad detected!");
 
+      if (!controller.isAdPlaying && !controller.speedCaptured) {
+        const originalSp =
+          document.getElementsByClassName("html5-main-video")[0].playbackRate;
+        controller.originalSpeed = originalSp || 1;
+        controller.speedCaptured = true;
+        console.log(
+          "[AdSkipper] Captured original playback speed:",
+          controller.originalSpeed
+        );
+      }
+
       const skipClicked = trySkipAd();
 
       if (!controller.isAdPlaying) {
-        controller.originalSpeed = video.playbackRate;
         controller.isAdPlaying = true;
         console.log("[AdSkipper] Ad started - setting up speed manipulation");
       }
@@ -115,12 +126,17 @@
       }, 200);
     } else {
       if (controller.isAdPlaying) {
-        video.playbackRate = controller.originalSpeed;
+        const originalSp =
+          document.getElementsByClassName("html5-main-video")[0].playbackRate;
+        video.playbackRate = originalSp || 1;
         controller.isAdPlaying = false;
         controller.skipAttempted = false;
+        controller.speedCaptured = false;
+
+        controller.originalSpeed = originalSp || 1;
         console.log(
           "[AdSkipper] Ad ended - restored original speed:",
-          controller.originalSpeed
+          (controller.originalSpeed = originalSp || 1)
         );
       }
     }
@@ -133,6 +149,7 @@
       controller.lastUrl = currentUrl;
       controller.isAdPlaying = false;
       controller.skipAttempted = false;
+      controller.speedCaptured = false;
 
       setTimeout(() => {
         initializeForNewVideo();
@@ -144,7 +161,8 @@
     const video = document.querySelector("video");
     if (video) {
       console.log("[AdSkipper] New video detected, monitoring ads...");
-      controller.originalSpeed = video.playbackRate || 1;
+
+      controller.speedCaptured = false;
     }
   }
 
